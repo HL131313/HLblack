@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: hlblack
-description: Minha imagem pessoal baseada no Aurora com KDE Plasma e RPM Fusion.
+description: Minha imagem pessoal baseada no Aurora com KDE Plasma e ferramentas essenciais.
 
 base-image: ghcr.io/ublue-os/aurora
 image-version: latest
@@ -15,24 +15,10 @@ modules:
     repos:
       copr:
         - atim/starship
-      custom:
-        rpmfusion-free:
-          name: RPM Fusion for Fedora 41 - Free
-          baseurl: https://mirrors.rpmfusion.org/free/fedora/releases/41/Everything/x86_64/os/
-          enabled: true
-          gpgcheck: true
-          gpgkey: https://mirrors.rpmfusion.org/free/fedora/RPM-GPG-KEY-rpmfusion-free-fedora-41
-        rpmfusion-nonfree:
-          name: RPM Fusion for Fedora 41 - Nonfree
-          baseurl: https://mirrors.rpmfusion.org/nonfree/fedora/releases/41/Everything/x86_64/os/
-          enabled: true
-          gpgcheck: true
-          gpgkey: https://mirrors.rpmfusion.org/nonfree/fedora/RPM-GPG-KEY-rpmfusion-nonfree-fedora-41
     install:
       packages:
         - micro
         - starship
-        - steam
     remove:
       packages:
         - firefox
@@ -45,6 +31,7 @@ modules:
         install:
           - org.mozilla.firefox
           - org.gnome.Loupe
+          - com.valvesoftware.Steam
       - scope: user
 
   - type: signing
