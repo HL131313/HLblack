@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://blue-build.org
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: hlblack
 description: Minha imagem pessoal baseada no Fedora Kinoite com Virt-Manager, Waydroid, ADB, Steam (Flatpak) e RPM Fusion.
 
@@ -30,50 +30,13 @@ modules:
         - distrobox
         - android-tools
 
-        # Virtualização & Containers Android
+        # Virtualização & Containers
         - virt-manager
-        - libvirt
-        - qemu
-        - bridge-utils
         - waydroid
 
-        # Jogos (Regras Udev para Controles no Flatpak)
-        - steam-devices
-
-        # Miniaturas e Gerenciador de Arquivos (Dolphin)
-        - ffmpegthumbs
-        - kdegraphics-thumbnailers
-        - qt-heif-image-plugin
-
-        # Compactação & Sistemas de Arquivos
-        - unrar
-        - p7zip
-        - p7zip-plugins
-
-    replace:
-      - from-repo: rpmfusion-free
-        allow-erasing: true
-        packages:
-          - old: ffmpeg-free
-            new: ffmpeg
-          - old: mesa-va-drivers
-            new: mesa-va-drivers-freeworld
-          - old: mesa-vdpau-drivers
-            new: mesa-vdpau-drivers-freeworld
-
-  - type: systemd
-    system:
-      enabled:
-        - libvirtd.service
-        - libvirtd.socket
-        - waydroid-container.service
-
+  # Módulo para instalar o Steam via Flatpak no primeiro boot
   - type: default-flatpaks
     configurations:
-      - notify: true
-        scope: system
+      - scope: user
         install:
           - com.valvesoftware.Steam
-      - scope: user
-
-  - type: signing
