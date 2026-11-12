@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: hlblack
-description: Minha imagem pessoal baseada no Fedora Kinoite 45 com Virt-Manager, Waydroid, Steam e EasyFlatpak.
+description: Minha imagem pessoal baseada no Fedora Kinoite 45 com Virt-Manager, Waydroid, Steam (Flatpak) e EasyFlatpak.
 
 base-image: quay.io/fedora-ostree-desktops/kinoite
 image-version: 45
@@ -17,17 +17,15 @@ modules:
         - atim/starship
     install:
       packages:
-        # Instala os repositórios RPM Fusion diretamente via gerenciador do Fedora
-        - https://download.rpmfusion.org/free/fedora/rpmfusion-free-release-45.noarch.rpm
-        - https://download.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-45.noarch.rpm
         - micro
         - starship
         - distrobox
-        - steam
+        # Ferramentas de Virtualização completas (nativo do repositório Fedora)
         - virt-manager
         - libvirt
         - qemu
         - bridge-utils
+        # Waydroid
         - waydroid
 
   - type: systemd
@@ -42,6 +40,7 @@ modules:
         install:
           - org.gnome.Loupe
           - org.dupot.easyflatpak
+          - com.valvesoftware.Steam # Steam oficial em Flatpak (melhor performance e zero conflito de repositório)
       - scope: user
 
   - type: signing
