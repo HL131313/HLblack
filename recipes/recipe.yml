@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: hlblack
-description: Minha imagem pessoal baseada no Fedora Kinoite com Virt-Manager, Waydroid, ADB, Steam (Flatpak) e RPM Fusion via rpm-ostree.
+description: Minha imagem pessoal baseada no Fedora Kinoite com Virt-Manager, Waydroid, ADB, Steam (Flatpak) e RPM Fusion.
 
 base-image: quay.io/fedora-ostree-desktops/kinoite
 image-version: 45
@@ -11,52 +11,54 @@ modules:
       - source: system
         destination: /
 
-  - type: rpm-ostree
+  - type: dnf
     repos:
-      - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-45.noarch.rpm
-      - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-45.noarch.rpm
+      nonfree: rpmfusion
     install:
-      # Repositórios e Codecs RPM Fusion
-      - rpmfusion-free-release
-      - rpmfusion-nonfree-release
-      - ffmpeg
-      - gstreamer1-plugins-bad-freeworld
-      - gstreamer1-plugins-ugly
-      - gstreamer1-libav
-      - mesa-va-drivers-freeworld
-      - mesa-vdpau-drivers-freeworld
-      - libheif-freeworld
-      
-      # Ferramentas Base & Shell
-      - micro
-      - starship
-      - distrobox
-      - android-tools
-      
-      # Virtualização & Containers Android
-      - virt-manager
-      - libvirt
-      - qemu
-      - bridge-utils
-      - waydroid
-      
-      # Jogos (Regras Udev para Controles no Flatpak)
-      - steam-devices
-      
-      # Miniaturas e Gerenciador de Arquivos (Dolphin)
-      - ffmpegthumbs
-      - kdegraphics-thumbnailers
-      - qt-heif-image-plugin
-      
-      # Compactação & Sistemas de Arquivos
-      - unrar
-      - rar
-      - p7zip
-      - p7zip-plugins
-      - unzip
-      - zip
-      - ntfs-3g
-      - exfatprogs
+      packages:
+        # Codecs e Multimídia (RPM Fusion)
+        - gstreamer1-plugins-bad-freeworld
+        - gstreamer1-plugins-ugly
+        - gstreamer1-libav
+        - libheif-freeworld
+
+        # Ferramentas Base & Shell
+        - micro
+        - starship
+        - distrobox
+        - android-tools
+
+        # Virtualização & Containers Android
+        - virt-manager
+        - libvirt
+        - qemu
+        - bridge-utils
+        - waydroid
+
+        # Jogos (Regras Udev para Controles no Flatpak)
+        - steam-devices
+
+        # Miniaturas e Gerenciador de Arquivos (Dolphin)
+        - ffmpegthumbs
+        - kdegraphics-thumbnailers
+        - qt-heif-image-plugin
+
+        # Compactação & Sistemas de Arquivos
+        - unrar
+        - rar
+        - p7zip
+        - p7zip-plugins
+        - unzip
+        - zip
+        - ntfs-3g
+        - exfatprogs
+
+    replace:
+      - from-repo: rpmfusion-free
+        packages:
+          - ffmpeg-free: ffmpeg
+          - mesa-va-drivers: mesa-va-drivers-freeworld
+          - mesa-vdpau-drivers: mesa-vdpau-drivers-freeworld
 
   - type: systemd
     system:
