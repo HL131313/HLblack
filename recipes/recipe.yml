@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+# yaml-language-server: $schema=https://blue-build.org
 name: hlblack
 description: Minha imagem pessoal baseada no Fedora Kinoite com Virt-Manager, Waydroid, ADB, Steam (Flatpak) e RPM Fusion.
 
@@ -16,9 +16,21 @@ modules:
       nonfree: rpmfusion
       copr:
         - atim/starship
+    remove:
+      packages:
+        - ffmpeg-free
+        - libavcodec-free
+        - libavdevice-free
+        - libavfilter-free
+        - libavformat-free
+        - libavutil-free
+        - libpostproc-free
+        - libswresample-free
+        - libswscale-free
     install:
       packages:
         # Codecs e Multimídia (RPM Fusion)
+        - ffmpeg
         - gstreamer1-plugins-bad-freeworld
         - gstreamer1-plugins-ugly
         - gstreamer1-libav
@@ -53,8 +65,6 @@ modules:
     replace:
       - from-repo: rpmfusion-free
         packages:
-          - old: ffmpeg-free
-            new: ffmpeg
           - old: mesa-va-drivers
             new: mesa-va-drivers-freeworld
           - old: mesa-vdpau-drivers
