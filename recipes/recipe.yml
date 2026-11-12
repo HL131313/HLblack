@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: hlblack
-description: Minha imagem pessoal baseada no Aurora DX com KDE Plasma e Steam nativa.
+description: Minha imagem pessoal baseada no Fedora Kinoite com Virt-Manager, Waydroid, Steam nativa e EasyFlatpak.
 
-base-image: ghcr.io/ublue-os/aurora-dx
-image-version: 45
+base-image: quay.io/fedora-ostree-desktops/kinoite
+image-version: latest
 
 modules:
   - type: files
@@ -20,11 +20,22 @@ modules:
         - micro
         - starship
         - distrobox
-        - virt-manager
         - firefox
         - firefox-langpacks
         - steam
-        - rpmfusion-nonfree-release # Garante acesso ao repositório não-livre da Steam
+        # Virt-Manager completo e dependências de virtualização
+        - virt-manager
+        - libvirt
+        - qemu
+        - bridge-utils
+        - dnsmasq
+        # Waydroid
+        - waydroid
+
+  - type: systemd
+    system:
+      enabled:
+        - libvirtd.service
 
   - type: default-flatpaks
     configurations:
@@ -32,7 +43,7 @@ modules:
         scope: system
         install:
           - org.gnome.Loupe
-          # A Steam foi removida daqui para não vir em Flatpak
+          - org.dupot.easyflatpak
       - scope: user
 
   - type: signing
