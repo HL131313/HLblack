@@ -45,14 +45,9 @@ modules:
 
         # Compactação & Sistemas de Arquivos
         - unrar
-        - rar
         - p7zip
         - p7zip-plugins
-        - unzip
-        - zip
-        - ntfs-3g
-        - exfatprogs
-
+        
     replace:
       - from-repo: rpmfusion-free
         packages:
