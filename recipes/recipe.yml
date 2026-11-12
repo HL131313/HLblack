@@ -14,6 +14,8 @@ modules:
   - type: dnf
     repos:
       nonfree: rpmfusion
+      copr:
+        - atim/starship
     install:
       packages:
         # Codecs e Multimídia (RPM Fusion)
@@ -47,7 +49,7 @@ modules:
         - unrar
         - p7zip
         - p7zip-plugins
-        
+
     replace:
       - from-repo: rpmfusion-free
         packages:
