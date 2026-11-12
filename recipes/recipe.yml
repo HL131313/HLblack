@@ -13,8 +13,9 @@ modules:
 
   - type: dnf
     repos:
-      - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-45.noarch.rpm
-      - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-45.noarch.rpm
+      files:
+        - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-45.noarch.rpm
+        - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-45.noarch.rpm
     copr:
       - atim/starship
     install:
