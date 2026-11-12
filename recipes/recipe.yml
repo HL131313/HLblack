@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: hlblack
-description: Minha imagem pessoal baseada no Aurora com KDE Plasma e ferramentas essenciais.
+description: Minha imagem pessoal baseada no Aurora DX com KDE Plasma e Steam nativa.
 
-base-image: ghcr.io/ublue-os/aurora
-image-version: latest
+base-image: ghcr.io/ublue-os/aurora-dx
+image-version: 45
 
 modules:
   - type: files
@@ -19,19 +19,20 @@ modules:
       packages:
         - micro
         - starship
-    remove:
-      packages:
+        - distrobox
+        - virt-manager
         - firefox
         - firefox-langpacks
+        - steam
+        - rpmfusion-nonfree-release # Garante acesso ao repositório não-livre da Steam
 
   - type: default-flatpaks
     configurations:
       - notify: true
         scope: system
         install:
-          - org.mozilla.firefox
           - org.gnome.Loupe
-          - com.valvesoftware.Steam
+          # A Steam foi removida daqui para não vir em Flatpak
       - scope: user
 
   - type: signing
