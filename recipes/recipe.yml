@@ -13,52 +13,48 @@ modules:
 
   - type: dnf
     repos:
-      files:
-        - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-%OS_VERSION%.noarch.rpm
-        - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-%OS_VERSION%.noarch.rpm
       copr:
         - atim/starship
-    remove:
-      packages:
-        - ffmpeg-free
-        - mesa-va-drivers
-        - mesa-vdpau-drivers
     install:
-      packages:
-        # Ferramentas Base & Shell
-        - micro
-        - starship
-        - distrobox
-        - android-tools
-        # Virtualização & Containers Android
-        - virt-manager
-        - libvirt
-        - qemu
-        - bridge-utils
-        - waydroid
-        # Jogos (Regras Udev para Controles no Flatpak)
-        - steam-devices
-        # Codecs Multimídia & Aceleração de Hardware
-        - ffmpeg
-        - gstreamer1-plugins-bad-freeworld
-        - gstreamer1-plugins-ugly
-        - gstreamer1-libav
-        - mesa-va-drivers-freeworld
-        - mesa-vdpau-drivers-freeworld
-        - libheif-freeworld
-        # Miniaturas e Gerenciador de Arquivos (Dolphin)
-        - ffmpegthumbs
-        - kdegraphics-thumbnailers
-        - qt-heif-image-plugin
-        # Compactação & Sistemas de Arquivos
-        - unrar
-        - rar
-        - p7zip
-        - p7zip-plugins
-        - unzip
-        - zip
-        - ntfs-3g
-        - exfatprogs
+      # Ferramentas Base & Shell
+      - micro
+      - starship
+      - distrobox
+      - android-tools
+      
+      # Virtualização & Containers Android
+      - virt-manager
+      - libvirt
+      - qemu
+      - bridge-utils
+      - waydroid
+      
+      # Jogos (Regras Udev para Controles no Flatpak)
+      - steam-devices
+      
+      # Codecs Multimídia & Aceleração de Hardware (Apenas adição para evitar conflito OSTree)
+      - ffmpeg
+      - gstreamer1-plugins-bad-freeworld
+      - gstreamer1-plugins-ugly
+      - gstreamer1-libav
+      - mesa-va-drivers-freeworld
+      - mesa-vdpau-drivers-freeworld
+      - libheif-freeworld
+      
+      # Miniaturas e Gerenciador de Arquivos (Dolphin)
+      - ffmpegthumbs
+      - kdegraphics-thumbnailers
+      - qt-heif-image-plugin
+      
+      # Compactação & Sistemas de Arquivos
+      - unrar
+      - rar
+      - p7zip
+      - p7zip-plugins
+      - unzip
+      - zip
+      - ntfs-3g
+      - exfatprogs
 
   - type: systemd
     system:
