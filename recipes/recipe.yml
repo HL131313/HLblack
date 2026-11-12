@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: hlblack
-description: Minha imagem pessoal baseada no Fedora Kinoite com Virt-Manager, Waydroid, ADB, Steam (Flatpak) e RPM Fusion.
+description: Minha imagem pessoal baseada no Fedora Kinoite com Virt-Manager, Waydroid, ADB, Steam (Flatpak) e RPM Fusion via rpm-ostree.
 
 base-image: quay.io/fedora-ostree-desktops/kinoite
 image-version: 45
@@ -11,14 +11,22 @@ modules:
       - source: system
         destination: /
 
-  - type: dnf
+  - type: rpm-ostree
     repos:
-      files:
-        - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-45.noarch.rpm
-        - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-45.noarch.rpm
-      copr:
-        - atim/starship
+      - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-45.noarch.rpm
+      - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-45.noarch.rpm
     install:
+      # Repositórios e Codecs RPM Fusion
+      - rpmfusion-free-release
+      - rpmfusion-nonfree-release
+      - ffmpeg
+      - gstreamer1-plugins-bad-freeworld
+      - gstreamer1-plugins-ugly
+      - gstreamer1-libav
+      - mesa-va-drivers-freeworld
+      - mesa-vdpau-drivers-freeworld
+      - libheif-freeworld
+      
       # Ferramentas Base & Shell
       - micro
       - starship
@@ -34,15 +42,6 @@ modules:
       
       # Jogos (Regras Udev para Controles no Flatpak)
       - steam-devices
-      
-      # Codecs Multimídia & Aceleração de Hardware
-      - ffmpeg
-      - gstreamer1-plugins-bad-freeworld
-      - gstreamer1-plugins-ugly
-      - gstreamer1-libav
-      - mesa-va-drivers-freeworld
-      - mesa-vdpau-drivers-freeworld
-      - libheif-freeworld
       
       # Miniaturas e Gerenciador de Arquivos (Dolphin)
       - ffmpegthumbs
