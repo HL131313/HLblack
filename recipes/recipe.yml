@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: hlblack
-description: Minha imagem pessoal baseada no Fedora COSMIC Atomic 45 com Virt-Manager, Waydroid, ADB, Steam (Flatpak), RPM Fusion e drivers Intel Iris Xe.
+description: Minha imagem pessoal baseada no Fedora COSMIC Atomic 45 com Virt-Manager, Waydroid, ADB, Steam Nativo, RPM Fusion e drivers Intel Iris Xe.
 
 base-image: quay.io/fedora-ostree-desktops/cosmic-atomic
 image-version: 45
@@ -27,7 +27,6 @@ modules:
 
         # Driver de mídia Intel VA-API (Iris Xe / i5-1135G7)
         - intel-media-driver
-        # Ferramentas para verificar aceleração de hardware
         - libva-utils
         - intel-gpu-tools
 
@@ -41,8 +40,12 @@ modules:
         - virt-manager
         - waydroid
 
-  - type: default-flatpaks
-    configurations:
-      - scope: user
-        install:
-          - com.valvesoftware.Steam
+        # Steam Nativo (RPM Fusion Nonfree)
+        - steam
+
+  # Módulo de Flatpaks removido (ou mantido apenas se você quiser outros apps)
+  # - type: default-flatpaks
+  #   configurations:
+  #     - scope: user
+  #       install:
+  #         - com.valvesoftware.Steam
