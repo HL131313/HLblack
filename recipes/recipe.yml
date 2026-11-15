@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-name: hlblack
-description: Minha imagem pessoal baseada no Fedora Kinoite com Virt-Manager, Waydroid, ADB, Steam (Flatpak) e RPM Fusion.
+name: hlblack-cosmic
+description: Minha imagem pessoal baseada no Fedora COSMIC Atomic 45 com Virt-Manager, Waydroid, ADB, Steam (Flatpak), RPM Fusion e drivers Intel Iris Xe.
 
-base-image: quay.io/fedora-ostree-desktops/kinoite
+base-image: quay.io/fedora-ostree-desktops/cosmic-atomic
 image-version: 45
 
 modules:
@@ -18,11 +18,18 @@ modules:
         - atim/starship
     install:
       packages:
-        # Codecs e Multimídia (RPM Fusion)
+        # Codecs de software (RPM Fusion)
         - gstreamer1-plugins-bad-freeworld
         - gstreamer1-plugins-ugly
-        - gstreamer1-libav
+        - gstreamer1-plugin-libav
         - libheif-freeworld
+        - libavcodec-freeworld
+
+        # Driver de mídia Intel VA-API (Iris Xe / i5-1135G7)
+        - intel-media-driver
+        # Ferramentas para verificar aceleração de hardware
+        - libva-utils
+        - intel-gpu-tools
 
         # Ferramentas Base & Shell
         - micro
@@ -34,7 +41,6 @@ modules:
         - virt-manager
         - waydroid
 
-  # Módulo para instalar o Steam via Flatpak no primeiro boot
   - type: default-flatpaks
     configurations:
       - scope: user
