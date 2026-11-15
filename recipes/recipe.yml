@@ -16,9 +16,6 @@ modules:
       nonfree: rpmfusion
       copr:
         - atim/starship
-      # AQUI ESTÁ A MUDANÇA: Adicionando o repositório Terra via URL
-      add:
-        - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
     install:
       packages:
         # Codecs de software (RPM Fusion)
@@ -38,6 +35,10 @@ modules:
         - starship
         - distrobox
         - android-tools
+        - bat
+        - btop
+        - htop
+        - eza
 
         # Virtualização & Containers
         - virt-manager
@@ -46,9 +47,8 @@ modules:
         # Steam Nativo
         - steam
         - steam-devices
-        - mangohud
 
-        # Sessão Gamescope (Agora vindo do repositório Terra)
+        # Gamescope, MangoHud e Goverlay
         - gamescope
-        - gamescope-session-plus
-        - gamescope-session-steam
+        - mangohud
+        - goverlay
