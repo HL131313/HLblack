@@ -42,6 +42,7 @@ modules:
 
         # Steam Nativo (RPM Fusion Nonfree)
         - steam
+        - steam-devices
 
   # Módulo de Flatpaks removido (ou mantido apenas se você quiser outros apps)
   # - type: default-flatpaks
