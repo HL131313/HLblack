@@ -16,6 +16,9 @@ modules:
       nonfree: rpmfusion
       copr:
         - atim/starship
+      # AQUI ESTÁ A MUDANÇA: Adicionando o repositório Terra via URL
+      add:
+        - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
     install:
       packages:
         # Codecs de software (RPM Fusion)
@@ -40,13 +43,12 @@ modules:
         - virt-manager
         - waydroid
 
-        # Steam Nativo (RPM Fusion Nonfree)
+        # Steam Nativo
         - steam
         - steam-devices
+        - mangohud
 
-  # Módulo de Flatpaks removido (ou mantido apenas se você quiser outros apps)
-  # - type: default-flatpaks
-  #   configurations:
-  #     - scope: user
-  #       install:
-  #         - com.valvesoftware.Steam
+        # Sessão Gamescope (Agora vindo do repositório Terra)
+        - gamescope
+        - gamescope-session-plus
+        - gamescope-session-steam
