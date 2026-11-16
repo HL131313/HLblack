@@ -32,6 +32,7 @@ modules:
         - android-tools
 
         # Virtualização & Containers
+        - distrobox
         - virt-manager
         - waydroid
 
