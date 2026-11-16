@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: hlblack
-description: Minha imagem pessoal baseada no Fedora COSMIC Atomic 45 com Virt-Manager, Waydroid, ADB, Steam Nativo, RPM Fusion e drivers Intel Iris Xe.
+description: Minha imagem pessoal baseada no Fedora Kinoite 45 com Virt-Manager, ADB, Steam Nativo, RPM Fusion, drivers Intel Iris Xe e KDE Plasma via COPR kdesig/kde-final.
 
-base-image: quay.io/fedora-ostree-desktops/cosmic-atomic
+base-image: quay.io/fedora-ostree-desktops/kinoite
 image-version: 45
 
 modules:
@@ -14,6 +14,8 @@ modules:
   - type: dnf
     repos:
       nonfree: rpmfusion
+      copr:
+        - kdesig/kde-final
     install:
       packages:
         # Codecs de software
@@ -34,7 +36,6 @@ modules:
         # Virtualização & Containers
         - distrobox
         - virt-manager
-        - waydroid
 
         # Steam Nativo
         - steam
