@@ -1,4 +1,3 @@
-# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: hlblack
 description: Minha imagem pessoal baseada no Fedora COSMIC Atomic 45 com Virt-Manager, Waydroid, ADB, Steam Nativo, RPM Fusion e drivers Intel Iris Xe.
 
@@ -14,41 +13,30 @@ modules:
   - type: dnf
     repos:
       nonfree: rpmfusion
-      copr:
-        - atim/starship
     install:
       packages:
-        # Codecs de software (RPM Fusion)
+        # Codecs (manter no RPM Fusion)
         - gstreamer1-plugins-bad-freeworld
         - gstreamer1-plugins-ugly
         - gstreamer1-plugin-libav
         - libheif-freeworld
         - libavcodec-freeworld
 
-        # Driver de mídia Intel VA-API (Iris Xe / i5-1135G7)
+        # Driver Intel (manter no dnf)
         - intel-media-driver
         - libva-utils
         - intel-gpu-tools
 
-        # Ferramentas Base & Shell
-        - micro
-        - starship
-        - distrobox
+        # Ferramentas restantes que não estão no Homebrew
         - android-tools
-        - bat
-        - btop
-        - htop
-        - eza
-
-        # Virtualização & Containers
         - virt-manager
         - waydroid
-
-        # Steam Nativo
         - steam
         - steam-devices
-
-        # Gamescope, MangoHud e Goverlay
         - gamescope
         - mangohud
         - goverlay
+
+  - type: script
+    scripts:
+      - install-homebrew.sh
