@@ -14,6 +14,8 @@ modules:
   - type: dnf
     repos:
       nonfree: rpmfusion
+      copr:
+        - imput/helium
     install:
       packages:
         # Codecs de software
@@ -44,5 +46,8 @@ modules:
         - gamescope
         - mangohud
         - goverlay
+
+        # Etc.
+        - helium-bin
 
   - type: brew
