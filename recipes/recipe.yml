@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: hlblack
-description: Minha imagem pessoal baseada no Fedora Kinoite 45 com Virt-Manager, ADB, Steam Nativo, RPM Fusion, drivers Intel Iris Xe e KDE Plasma via COPR kdesig/kde-final.
+description: Minha imagem pessoal baseada no Fedora Kinoite 45 com Virt-Manager, ADB, Steam Nativo, RPM Fusion, drivers Intel Iris Xe e KDE Plasma.
 
 base-image: quay.io/fedora-ostree-desktops/kinoite
 image-version: 45
@@ -15,7 +15,7 @@ modules:
     repos:
       nonfree: rpmfusion
       copr:
-        - kdesig/kde-final
+        - depsys/plasma
     install:
       packages:
         # Codecs de software
