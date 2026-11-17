@@ -1,6 +1,6 @@
 # HLblack &nbsp; [![bluebuild build badge](https://github.com/hl131313/hlblack/actions/workflows/build.yml/badge.svg)](https://github.com/hl131313/hlblack/actions/workflows/build.yml)
 
-Imagem pessoal baseada no Fedora COSMIC Atomic com Virt-Manager, Waydroid, ADB, Steam nativo, RPM Fusion e drivers Intel Iris Xe.
+Imagem pessoal baseada no Fedora Silver Blue com Virt-Manager, Waydroid, ADB, Steam nativo, RPM Fusion e drivers Intel Iris Xe.
 
 ## Instalação
 
